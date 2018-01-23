@@ -1,0 +1,65 @@
+#
+# File: config.yml | Note: Maintains the CircleCI Settings & Configurations
+#
+
+version: 2
+jobs:
+    build:
+        docker:
+            - image: circleci/android:api-26-alpha
+        working_directory: ~/project
+        environment:
+            JVM_OPTS: -Xmx3200m
+        steps:
+            - checkout
+            - restore_cache:
+                key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+            - run:
+                name: Download Forests Dependencies
+                command: ./gradlew androidDependencies
+            - run:
+                name: Build Forests
+                command: ./gradlew build
+            - save_cache:
+                key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+                paths:
+                    - ~/.gradle
+    test:
+        docker:
+            - image: circleci/android:api-26-alpha
+        steps:
+            - run: echo "disabled"
+    deploy:
+        docker:
+            - image: circleci/android:api-26-alpha
+        steps:
+            - run: echo "disabled"         
+      
+workflows:
+    version: 2
+    deployment:
+        jobs:
+            - build
+            - test:
+                type: approval
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only: build
+            - deploy:
+                type: approval
+                requires:
+                    - test
+                filters:
+                    branches:
+                        only: build
+    schedules: 
+        triggers:
+            - schedule:
+                cron: "0 0 * * *"
+                filters:
+                    branches:
+                        only: build
+        jobs:
+            - build
