@@ -30,15 +30,19 @@ apply plugin: 'com.android.application'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    testImplementation 'junit:junit:4.12'
 }
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         applicationId "com.shaidk.forests"
+        minSdkVersion 21
         versionCode 1
-        versionName '0.0.0'
+        versionName '0.1.1'
     }
 
     sourceSets {
