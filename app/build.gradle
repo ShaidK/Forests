@@ -32,6 +32,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     testImplementation 'junit:junit:4.12'
+
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+    compileOnly 'org.projectlombok:lombok:1.16.20'
 }
 
 android {
@@ -42,7 +45,7 @@ android {
         applicationId "com.shaidk.forests"
         minSdkVersion 21
         versionCode 1
-        versionName '0.1.1'
+        versionName '0.1.2'
     }
 
     sourceSets {

@@ -19,7 +19,7 @@ jobs:
                 command: ./gradlew androidDependencies
             - run:
                 name: Build Forests
-                command: ./gradlew build
+                command: ./gradlew clean build
             - save_cache:
                 key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
                 paths:
