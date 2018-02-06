@@ -45,11 +45,17 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ 'room.schemaLocation': '$projectDir/migrations'.toString() ]
+            }
+        }
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         applicationId "com.shaidk.forests"
         minSdkVersion 21
         versionCode 1
-        versionName '0.1.3'
+        versionName '0.1.4'
     }
 
     testOptions {
