@@ -37,6 +37,6 @@ public interface NoteDao
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertNewNote(Note... arg);
 
-    @Query(value = "SELECT * FROM NOTE")
+    @Query(value = "SELECT * FROM NOTE_TABLE")
     List<Note> obtainAllNotes();
 }

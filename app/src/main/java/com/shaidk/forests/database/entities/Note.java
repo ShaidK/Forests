@@ -32,9 +32,10 @@ import android.arch.persistence.room.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+@Entity(tableName = "NOTE_TABLE")
+@Getter @Setter
 public class Note extends Entities
 {
     @ColumnInfo(typeAffinity = ColumnInfo.TEXT)
-    @Getter @Setter public String title;
+    public String title;
 }
