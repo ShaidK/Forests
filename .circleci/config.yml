@@ -27,8 +27,15 @@ jobs:
     test:
         docker:
             - image: circleci/android:api-26-alpha
+        environment:
+            JVM_OPTS: -Xmx3200m
         steps:
-            - run: echo "disabled"
+            - checkout
+            - restore_cache:
+                key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+            - run:
+                name: Run Forests Unit Tests & Linting
+                command: ./gradlew lint test
     deploy:
         docker:
             - image: circleci/android:api-26-alpha
