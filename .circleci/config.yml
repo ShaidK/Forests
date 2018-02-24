@@ -35,7 +35,7 @@ jobs:
                 key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
             - run:
                 name: Run Forests Unit Tests & Linting
-                command: ./gradlew lint test
+                command: ./gradlew lint app:test
     deploy:
         docker:
             - image: circleci/android:api-26-alpha

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--   
-  ~ File: AndroidManifest.xml | Note: Maintain the Application resources & components 
+  ~ File: styles.xml | Note: Maintain the Application themes & styles 
 -->
 
 <!--
@@ -28,13 +28,6 @@
   ~ SOFTWARE.
 -->
 
-<manifest 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shaidk.forests">
-    <uses-sdk 
-        android:minSdkVersion="22" android:targetSdkVersion="26" />
-    <application 
-        android:label="@string/application_description"
-        android:theme="@style/Theme.Forests.Light"
-        android:icon="@mipmap/ic_launcher"/>
-</manifest>
+<resources>
+    <style name="Theme.Forests.Light" parent="Theme.AppCompat.Light" />
+</resources>
