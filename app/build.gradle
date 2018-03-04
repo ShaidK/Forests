@@ -57,7 +57,7 @@ android {
         applicationId "com.shaidk.forests"
         minSdkVersion 21
         versionCode 1
-        versionName '0.1.6'
+        versionName '0.2.1'
     }
 
     testOptions {
