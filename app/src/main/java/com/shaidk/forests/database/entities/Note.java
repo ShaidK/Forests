@@ -34,7 +34,7 @@ import lombok.Setter;
 
 @Entity(tableName = "NOTE_TABLE")
 @Getter @Setter
-public class Note extends Entities
+public final class Note extends Entities
 {
     @ColumnInfo(typeAffinity = ColumnInfo.TEXT)
     public String title;
